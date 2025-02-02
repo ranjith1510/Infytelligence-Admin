@@ -50,14 +50,18 @@ def delete_event(event_id):
     return response
 
 # Streamlit UI Title
-st.title("📜 Supabase Event Manager")
+st.markdown(
+    "<h1 style='white-space: nowrap;'>Corporate Action Event Manager</h1>", 
+    unsafe_allow_html=True
+)
+
 
 # --- TABS ---
 tab1, tab2, tab3, tab4 = st.tabs(["📜 View Events", "➕ Add Event", "✏️ Edit Event", "❌ Delete Event"])
 
 # --- TAB 1: VIEW EVENTS ---
 with tab1:
-    st.subheader("📄 View Event Details")
+    st.subheader("📄 View CA Events")
 
     events = fetch_events()
     event_ids = [event["id"] for event in events]
@@ -79,7 +83,7 @@ with tab1:
 
 # --- TAB 2: ADD NEW EVENT ---
 with tab2:
-    st.subheader("➕ Add New Event")
+    st.subheader("➕ Add New CA Event")
 
     new_event_id = st.text_input("Enter Event ID")
 
@@ -108,7 +112,7 @@ with tab2:
 
 # --- TAB 3: EDIT EVENT ---
 with tab3:
-    st.subheader("✏️ Edit Event")
+    st.subheader("✏️ Edit CS Event")
     
     events = fetch_events()
     edit_event_id = st.selectbox("Select Event to Edit", [event["id"] for event in events])
@@ -141,7 +145,7 @@ with tab3:
 
 # --- TAB 4: DELETE EVENT ---
 with tab4:
-    st.subheader("❌ Delete Event")
+    st.subheader("❌ Delete CA Event")
     
     events = fetch_events()
     delete_event_id = st.selectbox("Select Event to Delete", [event["id"] for event in events])
